@@ -1,0 +1,41 @@
+# Version control
+.git/
+.gitignore
+
+# Tests and coverage (not needed at runtime)
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data files (input comes from S3 at runtime)
+data/
+
+# Generated output (written at runtime via volume mount)
+output/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Dev/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Dev requirements (not installed in the image)
+requirements-dev.txt
+
+# Docs
+docs/
+README.md
