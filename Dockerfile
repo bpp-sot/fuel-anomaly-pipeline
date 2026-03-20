@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y \
     fonts-dejavu-core \
     && rm -rf /var/lib/apt/lists/*
 
+RUN useradd --create-home appuser
+
 WORKDIR /app
 
 # Copy runtime requirements first so Docker caches this layer separately.
@@ -18,6 +20,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application source code.
 COPY src/ ./src/
 COPY main.py .
+
+RUN chown -R appuser:appuser /app
+USER appuser
 
 # /app/output is the path used inside the container for all reports and charts.
 # Mount a host directory here with: -v "$(pwd)/output:/app/output"

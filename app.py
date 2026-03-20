@@ -195,7 +195,7 @@ if generate_charts:
     chart_cols = st.columns(2)
     for i, (title, path) in enumerate(chart_files.items()):
         if path.exists():
-            chart_cols[i % 2].image(str(path), caption=title, use_column_width=True)
+            chart_cols[i % 2].image(str(path), caption=title, use_container_width=True)
 
     st.divider()
 

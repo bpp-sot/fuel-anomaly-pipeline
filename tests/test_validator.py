@@ -68,12 +68,25 @@ class TestFuelDataValidator:
         assert len(validator.errors) > 0
         assert any(err.error_type == "range" for err in validator.errors)
     
-    def test_validate_non_numeric_in_numeric_column(self, valid_df):
+    def test_validate_non_numeric_in_numeric_column(self):
         """Test detection of non-numeric values in numeric columns."""
-        valid_df.loc[0, "passengers"] = "invalid"
+        df = pd.DataFrame({
+            "flight_id": ["JT001", "JT002"],
+            "date": ["2026-02-01 08:30", "2026-02-02 14:15"],
+            "route": ["LBA-ALC", "MAN-PMI"],
+            "aircraft_type": ["737-800", "737-800"],
+            "planned_fuel_kg": [4500, 4200],
+            "actual_fuel_kg": [4520, 4180],
+            "duration_min": [165, 150],
+            "passengers": ["invalid", 175],
+            "cargo_weight_kg": [1200, 1100],
+            "catering_weight_kg": [150, 145],
+            "wind_speed_kts": [15, 10],
+            "temperature_c": [18, 20]
+        })
         
         validator = FuelDataValidator(strict=False)
-        validator.validate(valid_df)
+        validator.validate(df)
         
         assert len(validator.errors) > 0
     

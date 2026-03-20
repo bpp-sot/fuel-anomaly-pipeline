@@ -5,7 +5,7 @@ Generates text and JSON reports summarizing detected anomalies.
 
 import json
 from pathlib import Path
-from typing import List, Dict
+from typing import Any, List, Dict
 from datetime import datetime
 from .detector import Anomaly
 
@@ -30,7 +30,7 @@ class AnomalyReporter:
     def generate_text_report(
         self,
         anomalies: List[Anomaly],
-        summary: Dict[str, any],
+        summary: Dict[str, Any],
         output_file: str = "anomaly_report.txt"
     ) -> str:
         """Generate human-readable text report.
@@ -96,7 +96,7 @@ class AnomalyReporter:
     def generate_json_report(
         self,
         anomalies: List[Anomaly],
-        summary: Dict[str, any],
+        summary: Dict[str, Any],
         output_file: str = "anomaly_report.json"
     ) -> str:
         """Generate machine-readable JSON report.
@@ -139,7 +139,7 @@ class AnomalyReporter:
         
         return str(output_path)
     
-    def print_summary(self, summary: Dict[str, any]) -> None:
+    def print_summary(self, summary: Dict[str, Any]) -> None:
         """Print summary to console.
         
         Args:
