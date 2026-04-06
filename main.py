@@ -12,6 +12,9 @@ import argparse
 import sys
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from src.loader import load_fuel_data, load_fuel_data_from_s3, LoaderError
 from src.validator import FuelDataValidator, ValidatorError
 from src.enricher import FuelDataEnricher, EnricherError
